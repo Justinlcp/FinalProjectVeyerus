@@ -18,4 +18,18 @@ public class Gene {
     public double getSpeed() { return speed; }
     public double getFoodEfficiency() { return foodEfficiency; }
     public double getSize() { return size; }
+    
+        public static Gene crossover(Gene parentA, Gene parentB) {
+        double speed = RNG.nextBoolean() ? parentA.speed : parentB.speed;
+        double efficiency = RNG.nextBoolean() ? parentA.foodEfficiency : parentB.foodEfficiency;
+        double size = RNG.nextBoolean() ? parentA.size : parentB.size;
+        return new Gene(speed, efficiency, size);
+    }
+
+    public Gene mutate(double rate) {
+        double newSpeed = speed + (RNG.nextDouble() - 0.5) * rate;
+        double newEfficiency = foodEfficiency + (RNG.nextDouble() - 0.5) * rate;
+        double newSize = size + (RNG.nextDouble() - 0.5) * rate;
+        return new Gene(newSpeed, newEfficiency, newSize);
+    }
 }
