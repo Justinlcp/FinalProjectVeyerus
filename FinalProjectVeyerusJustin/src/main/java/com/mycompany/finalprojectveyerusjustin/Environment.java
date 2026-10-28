@@ -1,13 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.finalprojectveyerusjustin;
 
-/**
- *
- * @author alexa
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class Environment {
-    
+    private final double width;
+    private final double height;
+    private final List<Organism> organisms = new ArrayList<>();
+    private final List<Food> food = new ArrayList<>();
+
+    public Environment(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public void addOrganism(Organism o) { organisms.add(o); }
+    public void addFood(Food f) { food.add(f); }
+
+    public List<Organism> getOrganisms() { return organisms; }
+    public List<Food> getFood() { return food; }
+    public double getWidth() { return width; }
+    public double getHeight() { return height; }
 }
