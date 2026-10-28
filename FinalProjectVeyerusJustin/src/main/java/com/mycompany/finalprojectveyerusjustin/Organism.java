@@ -21,4 +21,13 @@ public class Organism {
     public boolean isAlive() {
         return energy > 0;
     }
+    
+    public void setPosition(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void changeEnergy(double amount) {
+        this.energy += amount;
+    }
 }
