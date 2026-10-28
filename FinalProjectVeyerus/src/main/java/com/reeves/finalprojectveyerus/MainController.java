@@ -34,6 +34,6 @@ public class MainController {
     
     @FXML 
     public void initialize(){
-        System.out.println("MainCOntroller intialized");
+        System.out.println("MainController intialized");
     }
 }
