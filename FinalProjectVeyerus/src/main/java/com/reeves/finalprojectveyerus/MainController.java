@@ -34,6 +34,20 @@ public class MainController {
     
     @FXML 
     public void initialize(){
-        System.out.println("MainController intialized");
+        resetButton.setOnAction(e -> onReset());
+        startButton.setOnAction(e -> onStart());
+        pauseButton.setOnAction(e -> onPause());
+    }
+
+    private void onReset() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void onStart() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void onPause() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
