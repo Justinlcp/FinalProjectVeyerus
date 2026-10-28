@@ -10,16 +10,23 @@ package com.reeves.finalprojectveyerus;
  */
 public class MainController {
     private Label populationLabel;
-    private Label populationLabel;
-    private Label populationLabel;
-    private Label populationLabel;
-    private Label populationLabel;
-    private Label populationLabel;
-    private Label populationLabel;
-    private Label populationLabel;
-    private Label populationLabel;
-    private Label populationLabel;
-    private Label populationLabel;
+    private Label generationLabel;
+    private Label foodLabel;
+    
+    private Slider populationSlider;
+    private Slider speedSlider;
+    private Slider foodSlider ;
+    
+    
+    private Pane arenaPane;
+    
+    
+    private Button startButton;
+    private Button pauseButton;
+    private Button resetButton;
+    
+    
+    
    
     
 }
