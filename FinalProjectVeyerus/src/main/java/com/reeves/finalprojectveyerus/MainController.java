@@ -4,26 +4,33 @@
  */
 package com.reeves.finalprojectveyerus;
 
+import java.lang.classfile.Label;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
+import javafx.scene.layout.Pane;
+
 /**
  *
  * @author SEVEE
  */
 public class MainController {
-    private Label populationLabel;
-    private Label generationLabel;
-    private Label foodLabel;
     
-    private Slider populationSlider;
-    private Slider speedSlider;
-    private Slider foodSlider ;
+    @FXML private Label populationLabel;
+    @FXML private Label generationLabel;
+    @FXML private Label foodLabel;
     
-    
-    private Pane arenaPane;
+    @FXML private Slider populationSlider;
+    @FXML private Slider speedSlider;
+    @FXML private Slider foodSlider ;
     
     
-    private Button startButton;
-    private Button pauseButton;
-    private Button resetButton;
+    @FXML private Pane arenaPane;
+    
+    
+    @FXML private Button startButton;
+    @FXML private Button pauseButton;
+    @FXML private Button resetButton;
     
     
     
