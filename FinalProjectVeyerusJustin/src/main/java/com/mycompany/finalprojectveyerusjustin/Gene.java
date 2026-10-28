@@ -1,13 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.finalprojectveyerusjustin;
 
-/**
- *
- * @author alexa
- */
+import java.util.Random;
+
 public class Gene {
-    
+    private double speed;
+    private double foodEfficiency;
+    private double size;
+
+    private static final Random RNG = new Random();
+
+    public Gene(double speed, double foodEfficiency, double size) {
+        this.speed = speed;
+        this.foodEfficiency = foodEfficiency;
+        this.size = size;
+    }
+
+    public double getSpeed() { return speed; }
+    public double getFoodEfficiency() { return foodEfficiency; }
+    public double getSize() { return size; }
 }
