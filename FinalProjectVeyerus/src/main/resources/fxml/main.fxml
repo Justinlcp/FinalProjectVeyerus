@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.reeves.finalprojectveyerus.MainController">
+
+    <top>
+        <VBox spacing="8" style="-fx-padding: 10;">
+            <Label text="VeyeRus" style="-fx-font-size: 20; -fx-font-weight: bold;" />
+            <HBox spacing="20">
+                <VBox>
+                    <Label text="Speed" />
+                    <Slider fx:id="speedSlider" min="0" max="10" value="5" />
+                </VBox>
+                <VBox>
+                    <Label text="Food" />
+                    <Slider fx:id="foodSlider" min="0" max="100" value="40" />
+                </VBox>
+                <VBox>
+                    <Label text="Populatio" />
+                    <Slider fx:id="populationSlider" min="0" max="100" value="20" />
+                </VBox>
+            </HBox>
+        </VBox>
+    </top>
+
+    <left>
+        <VBox spacing="10" style="-fx-padding: 10;">
+            <Label fx:id="populationLabel" text="Population: 20" />
+            <Label fx:id="generationLabel" text="Generations: 0" />
+            <Label fx:id="fooddLabel" text="Food: 40" />
+        </VBox>
+    </left>
+
+    <center>
+        <Pane fx:id="arenaPane" style="-fx-background-color: #EFF3EE; -fx-border-color: black;" />
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER" style="-fx-padding: 10;">
+            <Button fx:id="resetButton" text="Reset" />
+            <Button fx:id="startButton" text="Start" />
+            <Button fx:id="pauseButton" text="Pause" />
+        </HBox>
+    </bottom>
+
+</BorderPane>
