@@ -32,8 +32,8 @@ public class MainController {
     @FXML private Button pauseButton;
     @FXML private Button resetButton;
     
-    
-    
-   
-    
+    @FXML 
+    public void initialize(){
+        System.out.println("MainCOntroller intialized");
+    }
 }
