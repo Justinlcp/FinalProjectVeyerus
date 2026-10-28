@@ -28,7 +28,7 @@
                     <Slider fx:id="foodSlider" min="0" max="100" value="40" />
                 </VBox>
                 <VBox>
-                    <Label text="Populatio" />
+                    <Label text="Population" />
                     <Slider fx:id="populationSlider" min="0" max="100" value="20" />
                 </VBox>
             </HBox>
@@ -39,7 +39,7 @@
         <VBox spacing="10" style="-fx-padding: 10;">
             <Label fx:id="populationLabel" text="Population: 20" />
             <Label fx:id="generationLabel" text="Generations: 0" />
-            <Label fx:id="fooddLabel" text="Food: 40" />
+            <Label fx:id="foodLabel" text="Food: 40" />
         </VBox>
     </left>
 
