@@ -5,6 +5,8 @@ public class Organism {
     private double y;
     private double energy;
     private Gene gene;
+    
+    private int generation = 0;
 
     public Organism(double x, double y, double energy, Gene gene) {
         this.x = x;
@@ -30,4 +32,7 @@ public class Organism {
     public void changeEnergy(double amount) {
         this.energy += amount;
     }
+    
+    public int getGeneration() { return generation; }
+    public void setGeneration(int generation) { this.generation = generation; }
 }
