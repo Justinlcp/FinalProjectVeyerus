@@ -1,9 +1,13 @@
 package com.mycompany.finalprojectveyerusjustin;
 
+import java.util.List;
+
 public class SimulationEngine {
     private final Environment environment;
     private final MovementController movement = new MovementController();
     private int tickCount = 0;
+    private final ReproductionManager reproduction = new ReproductionManager();
+    private int generation = 0;
 
     private static final double FEED_DISTANCE = 10;
     private static final double ENERGY_PER_TICK = 1;
@@ -25,6 +29,12 @@ public class SimulationEngine {
             });
         }
         environment.getOrganisms().removeIf(o -> !o.isAlive());
+        
+        List<Organism> children = reproduction.reproduce(environment.getOrganisms());
+        for (Organism c : children) {
+            environment.addOrganism(c);
+            generation = Math.max(generation, c.getGeneration());
+        }
     }
 
     public Environment getEnvironment() { return environment; }
