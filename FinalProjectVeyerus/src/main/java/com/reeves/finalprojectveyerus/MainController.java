@@ -4,11 +4,13 @@
  */
 package com.reeves.finalprojectveyerus;
 
-import java.lang.classfile.Label;
+
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.Pane;
+import javafx.scene.control.Label;
 
 /**
  *
@@ -32,22 +34,65 @@ public class MainController {
     @FXML private Button pauseButton;
     @FXML private Button resetButton;
     
+    private static final double ARENA_W = 600;
+    private static final double ARENA_H = 400;
+
+    private final SimulationView view = new SimulationView();
+    private SimulationEngine engine;
+    private AnimationTimer timer;
+    
     @FXML 
-    public void initialize(){
+    public void initialize() {
         resetButton.setOnAction(e -> onReset());
         startButton.setOnAction(e -> onStart());
         pauseButton.setOnAction(e -> onPause());
+
+        timer = new AnimationTimer() {
+            private long last = 0;
+            
+            @Override
+            public void handle(long now) {
+                double ticksPerSecond = Math.max(1, speedSlider.getValue() * 6);
+                if (now - last >= 1_000_000_000L / ticksPerSecond) {
+                    engine.tick();
+                    refresh();
+                    last = now;
+                }
+            }
+        };
+        onReset();
     }
 
     private void onReset() {   
-        System.out.println("Reset clicked!");
+        timer.stop();
+        Environment env = new Environment(ARENA_W, ARENA_H);
+        for (int i = 0; i < populationSlider.getValue(); i++) {
+            Gene gene = new Gene(1 + Math.random() * 3, 0.5 + Math.random(), 1 + Math.random() * 3);
+            env.addOrganism(new Organism(Math.random() * ARENA_W, Math.random() * ARENA_H, 50, gene));
+        }
+        
+        for (int i = 0; i < foodSlider.getValue(); i++) {
+            env.addFood(new Food(Math.random() * ARENA_W, Math.random() * ARENA_H, 10));
+        }
+        
+        engine = new SimulationEngine(env);
+        refresh();
     }
 
     private void onStart() {
-        System.out.println("Start clicked!");
+        timer.start();
     }
 
     private void onPause() {
-        System.out.println("Pause clicked!");
+        timer.stop();
+    }
+    
+    //helper
+    private void refresh() {
+        Environment env = engine.getEnvironment();
+        view.render(arenaPane, env);
+        populationLabel.setText("Population: " + env.getOrganisms().size());
+        foodLabel.setText("Food: " + env.getFood().size());
+        
     }
 }
