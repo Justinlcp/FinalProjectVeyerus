@@ -39,15 +39,15 @@ public class MainController {
         pauseButton.setOnAction(e -> onPause());
     }
 
-    private void onReset() {
+    private void onReset() {   
         System.out.println("Reset clicked!");
     }
 
     private void onStart() {
-        System.out.println("Reset clicked!");
+        System.out.println("Start clicked!");
     }
 
     private void onPause() {
-        System.out.println("Reset clicked!");
+        System.out.println("Pause clicked!");
     }
 }
