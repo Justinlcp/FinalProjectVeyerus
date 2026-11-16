@@ -39,6 +39,7 @@
             <Label fx:id="populationLabel" text="Population: 20" />
             <Label fx:id="generationLabel" text="Generations: 0" />
             <Label fx:id="foodLabel" text="Food: 40" />
+            <Label fx:id="avgSpeedLabel" text="Avg speed: -" />
         </VBox>
     </left>
 
