@@ -12,6 +12,10 @@ public class SimulationEngine {
     private static final double FEED_DISTANCE = 10;
     private static final double ENERGY_PER_TICK = 1;
 
+    private double foodRespawnChance = 0.2;
+
+    public void setFoodRespawnChance(double chance) { this.foodRespawnChance = chance; }
+    
     public SimulationEngine(Environment environment) {
         this.environment = environment;
     }
@@ -34,6 +38,12 @@ public class SimulationEngine {
         for (Organism c : children) {
             environment.addOrganism(c);
             generation = Math.max(generation, c.getGeneration());
+        }
+        
+                if (Math.random() < foodRespawnChance) {
+            environment.addFood(new Food(
+                Math.random() * environment.getWidth(),
+                Math.random() * environment.getHeight(), 10));
         }
     }
 
