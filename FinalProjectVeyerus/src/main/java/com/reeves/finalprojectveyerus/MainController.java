@@ -21,10 +21,12 @@ public class MainController {
     @FXML private Label populationLabel;
     @FXML private Label generationLabel;
     @FXML private Label foodLabel;
+    @FXML private Label avgSpeedLabel;    
     
     @FXML private Slider populationSlider;
     @FXML private Slider speedSlider;
     @FXML private Slider foodSlider ;
+    
     
     
     @FXML private Pane arenaPane;
@@ -89,10 +91,20 @@ public class MainController {
     
     //helper
     private void refresh() {
+        
         Environment env = engine.getEnvironment();
         view.render(arenaPane, env);
+        
         populationLabel.setText("Population: " + env.getOrganisms().size());
         foodLabel.setText("Food: " + env.getFood().size());
+        generationLabel.setText("Generation: " + engine.getGeneration());
+        //just a logic place holder fr when justin makes the getGen method in simEng
         
+        double total = 0;
+        for (Organism o : env.getOrganisms()) {
+            total += o.getGene().getSpeed();
+        }
+        int count = env.getOrganisms().size();
+        avgSpeedLabel.setText(count ==0 ? "Avg speed: -" : String.format("Avg speed: %.2f",total/count));
     }
 }
