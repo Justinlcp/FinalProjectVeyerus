@@ -62,6 +62,7 @@ public class MainController {
                 }
             }
         };
+        foodSlider.valueProperty().addListener((obs, oldVal,newVal) -> engine.setFoodRespawnChance(newVal.doubleValue()/100.0) );
         onReset();
     }
 
@@ -78,6 +79,8 @@ public class MainController {
         }
         
         engine = new SimulationEngine(env);
+        engine.setFoodRespawnChance(foodSlider.getValue()/100.0 );
+        
         refresh();
     }
 
