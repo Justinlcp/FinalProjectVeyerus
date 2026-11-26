@@ -24,7 +24,9 @@ public class SimulationEngine {
         tickCount++;
         for (Organism o : environment.getOrganisms()) {
             movement.move(o, environment);
-            o.changeEnergy(-ENERGY_PER_TICK);
+            
+            double cost = ENERGY_PER_TICK * Math.max(0.25, 0.5+ o.getGene().getSize()/4.0);
+            o.changeEnergy(-cost);
 
             environment.getFood().removeIf(f -> {
                 boolean eaten = Math.hypot(f.getX() - o.getX(), f.getY() - o.getY()) < FEED_DISTANCE;
