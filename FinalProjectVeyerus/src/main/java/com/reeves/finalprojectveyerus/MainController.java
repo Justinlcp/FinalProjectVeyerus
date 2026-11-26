@@ -77,7 +77,7 @@ public class MainController {
         controls.onFoodChanged(chance -> engine.setFoodRespawnChance(chance));
         populationSeries.setName("Population");
         populationChart.getData().add(populationSeries);
-        
+        onReset();
     }
 
     private void onReset() {   
