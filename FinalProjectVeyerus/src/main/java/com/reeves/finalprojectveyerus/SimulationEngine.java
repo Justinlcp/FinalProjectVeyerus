@@ -9,8 +9,8 @@ public class SimulationEngine {
     private int tickCount = 0;
     private int generation = 0;
 
-    private static final double FEED_DISTANCE = 10;
-    private static final double ENERGY_PER_TICK = 1;
+    private static final double FEED_DISTANCE = 14;
+    private static final double ENERGY_PER_TICK = 0.5;
 
     private double foodRespawnChance = 0.2;
 
@@ -24,8 +24,7 @@ public class SimulationEngine {
         tickCount++;
         for (Organism o : environment.getOrganisms()) {
             movement.move(o, environment);
-            
-            double cost = ENERGY_PER_TICK * Math.max(0.25, 0.5+ o.getGene().getSize()/4.0);
+            double cost = ENERGY_PER_TICK * Math.max(0.25, 0.5 + o.getGene().getSize() / 4.0);
             o.changeEnergy(-cost);
 
             environment.getFood().removeIf(f -> {
@@ -45,7 +44,7 @@ public class SimulationEngine {
         if (Math.random() < foodRespawnChance) {
             environment.addFood(new Food(
                 Math.random() * environment.getWidth(),
-                Math.random() * environment.getHeight(), 10));
+                Math.random() * environment.getHeight(),20));
         }
     }
 
