@@ -13,7 +13,8 @@ public class ReproductionManager {
             Organism a = organisms.get(i);
             if (a.getEnergy() < REPRODUCE_THRESHOLD) continue;
 
-            Organism b = organisms.get((i + 1) % organisms.size());
+            Organism b = findBestPartner(a, organisms);
+            if (b == null) continue;
             Gene childGene = Gene.crossover(a.getGene(), b.getGene()).mutate(MUTATION_RATE);
 
             a.changeEnergy(-REPRODUCE_THRESHOLD / 2);
@@ -22,5 +23,14 @@ public class ReproductionManager {
             children.add(child);
         }
         return children;
+    }
+
+    private Organism findBestPartner(Organism a, List<Organism> organisms) {
+        Organism best = null;
+        for (Organism o : organisms) {
+            if (o == a) continue;
+            if (best == null || o.getEnergy() > best.getEnergy()) best = o;
+        }
+        return best;
     }
 }
