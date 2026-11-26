@@ -14,18 +14,16 @@ import javafx.scene.shape.Circle;
  * @author SEVEE
  */
 public class SimulationView {
-    
-    public void render(Pane arenaPane, Environment env){
+
+    public void render(Pane arenaPane, Environment env) {
         arenaPane.getChildren().clear();
-        
         for (Food f : env.getFood()) {
             Circle dot = new Circle(f.getX(), f.getY(), 3, Color.ORANGE);
             arenaPane.getChildren().add(dot);
         }
         for (Organism o : env.getOrganisms()) {
-            Circle dot = new Circle(o.getX(), o.getY(), 6, Color.AZURE);
+            Circle dot = new Circle(o.getX(), o.getY(), 6, Color.web("#B0286B"));
             arenaPane.getChildren().add(dot);
         }
     }
-    
 }

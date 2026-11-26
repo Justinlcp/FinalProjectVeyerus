@@ -11,7 +11,7 @@
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 
-<BorderPane prefHeight="358.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.reeves.finalprojectveyerus.MainController">
+<BorderPane prefHeight="560.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.reeves.finalprojectveyerus.MainController">
 
     <top>
         <VBox spacing="8" style="-fx-padding: 10;">
@@ -37,7 +37,7 @@
     </top>
 
     <left>
-        <VBox prefHeight="207.0" prefWidth="101.0" spacing="30.0" style="-fx-padding: 10;">
+        <VBox prefHeight="207.0" prefWidth="150.0" spacing="30.0" style="-fx-padding: 10;">
             <Label fx:id="populationLabel" text="Population: 20" />
             <Label fx:id="generationLabel" text="Generations: 0" />
             <Label fx:id="foodLabel" text="Food: 40" />
@@ -55,7 +55,8 @@
     </right>
 
     <center>
-        <Pane fx:id="arenaPane" maxWidth="-Infinity" prefHeight="234.0" prefWidth="589.0" style="-fx-background-color: #EFF3EE; -fx-border-color: black;" />
+        <Pane fx:id="arenaPane" minHeight="400.0" minWidth="600.0" maxHeight="400.0" maxWidth="600.0" prefHeight="400.0" prefWidth="600.0" 
+              style="-fx-background-color: #EFF3EE; -fx-border-color: black;" />
     </center>
 
     <bottom>

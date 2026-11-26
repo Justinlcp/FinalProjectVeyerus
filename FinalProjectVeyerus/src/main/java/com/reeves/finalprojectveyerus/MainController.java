@@ -51,7 +51,7 @@ public class MainController {
     
     @FXML 
     public void initialize() {
-        controls = new ControlPanelView (speedSlider,  foodSlider,populationSlider);
+        controls = new ControlPanelView(foodSlider, populationSlider, speedSlider);
         resetButton.setOnAction(e -> onReset());
         startButton.setOnAction(e -> onStart());
         pauseButton.setOnAction(e -> onPause());
@@ -90,7 +90,7 @@ public class MainController {
         }
         
         for (int i = 0;i<controls.getFoodCount(); i++) {
-            env.addFood(new Food(Math.random() * ARENA_W, Math.random() * ARENA_H, 10));
+            env.addFood(new Food(Math.random() * ARENA_W, Math.random() * ARENA_H, 20));
         }
         
         engine = new SimulationEngine(env);
