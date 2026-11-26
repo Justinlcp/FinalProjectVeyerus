@@ -42,9 +42,11 @@ public class MainController {
     private final SimulationView view = new SimulationView();
     private SimulationEngine engine;
     private AnimationTimer timer;
+    private ControlPanelView controls;
     
     @FXML 
     public void initialize() {
+        controls = new ControlPanelView (speedSlider,  foodSlider,populationSlider);
         resetButton.setOnAction(e -> onReset());
         startButton.setOnAction(e -> onStart());
         pauseButton.setOnAction(e -> onPause());
@@ -62,24 +64,23 @@ public class MainController {
                 }
             }
         };
-        foodSlider.valueProperty().addListener((obs, oldVal,newVal) -> engine.setFoodRespawnChance(newVal.doubleValue()/100.0) );
-        onReset();
+        controls.onFoodChanged(chance -> engine.setFoodRespawnChance(chance));
     }
 
     private void onReset() {   
         timer.stop();
         Environment env = new Environment(ARENA_W, ARENA_H);
-        for (int i = 0; i < populationSlider.getValue(); i++) {
+        for (int i = 0; i < controls.getPopulationCount() ; i++) {
             Gene gene = new Gene(1 + Math.random() * 3, 0.5 + Math.random(), 1 + Math.random() * 3);
             env.addOrganism(new Organism(Math.random() * ARENA_W, Math.random() * ARENA_H, 50, gene));
         }
         
-        for (int i = 0; i < foodSlider.getValue(); i++) {
+        for (int i = 0;i<controls.getFoodCount(); i++) {
             env.addFood(new Food(Math.random() * ARENA_W, Math.random() * ARENA_H, 10));
         }
         
         engine = new SimulationEngine(env);
-        engine.setFoodRespawnChance(foodSlider.getValue()/100.0 );
+        engine.setFoodRespawnChance(controls.getFoodRespawnChance());
         
         refresh();
     }
