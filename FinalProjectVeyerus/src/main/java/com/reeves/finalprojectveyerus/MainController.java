@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Label;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 
 /**
  *
@@ -36,6 +38,9 @@ public class MainController {
     @FXML private Button pauseButton;
     @FXML private Button resetButton;
     
+     @FXML private LineChart<Number, Number> populationChart;
+    private final XYChart.Series<Number, Number> populationSeries = new XYChart.Series<>();
+    
     private static final double ARENA_W = 600;
     private static final double ARENA_H = 400;
 
@@ -60,15 +65,24 @@ public class MainController {
                 if (now - last >= 1_000_000_000L / ticksPerSecond) {
                     engine.tick();
                     refresh();
+                    populationSeries.getData().add(
+                        new XYChart.Data<>(engine.getTickCount(), engine.getEnvironment().getOrganisms().size()));
+                    if (populationSeries.getData().size() > 300) {
+                        populationSeries.getData().remove(0);
+                    }
                     last = now;
                 }
             }
         };
         controls.onFoodChanged(chance -> engine.setFoodRespawnChance(chance));
+        populationSeries.setName("Population");
+        populationChart.getData().add(populationSeries);
+        
     }
 
     private void onReset() {   
         timer.stop();
+        populationSeries.getData().clear();
         Environment env = new Environment(ARENA_W, ARENA_H);
         for (int i = 0; i < controls.getPopulationCount() ; i++) {
             Gene gene = new Gene(1 + Math.random() * 3, 0.5 + Math.random(), 1 + Math.random() * 3);

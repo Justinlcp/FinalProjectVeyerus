@@ -8,6 +8,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 
 <BorderPane prefHeight="358.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.reeves.finalprojectveyerus.MainController">
 
@@ -42,6 +44,15 @@
             <Label fx:id="avgSpeedLabel" text="Avg speed: -" />
         </VBox>
     </left>
+    
+    <right>
+        
+        <LineChart fx:id= "populationChart"  prefWidth ="300" title="Population over time"   createSymbols = "false" animated="false">
+            
+            <xAxis><NumberAxis label="Tick" /></xAxis>
+            <yAxis><NumberAxis label="Organisms" /></yAxis>
+        </LineChart>
+    </right>
 
     <center>
         <Pane fx:id="arenaPane" maxWidth="-Infinity" prefHeight="234.0" prefWidth="589.0" style="-fx-background-color: #EFF3EE; -fx-border-color: black;" />
